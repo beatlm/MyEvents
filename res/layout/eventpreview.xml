@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/prevevent"
+    android:orientation="horizontal"
+    android:onClick="showEvent"
+   >
+
+    
+    <ImageView
+        android:id="@+id/prevPhoto"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:src="@drawable/abc_spinner_ab_focused_holo_light"
+        android:text="@string/myEvents" />
+   
+      
+      
+      <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/prevevent"
+    android:orientation="vertical"
+     >
+    
+<TextView
+        android:id="@+id/prevTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="@string/creador"
+        style="@style/TitleEvent" />
+
+   
+    
+     <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/prevevent"
+    android:orientation="horizontal" >
+     <TextView
+        android:id="@+id/prevDay"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+      
+        />
+      <TextView
+        android:id="@+id/prevMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+       
+        />
+      <TextView
+        android:id="@+id/prevYear"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+  
+      />
+       <TextView
+        android:id="@+id/prevHour"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+      
+       />
+          
+    
+    </LinearLayout>
+  <TextView
+        android:id="@+id/prevRest"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+      
+        style="@style/LightFont"
+         />
+ 
+
+  </LinearLayout>
+
+</LinearLayout>

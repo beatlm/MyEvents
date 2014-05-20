@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Settings</string>
+    <string name="app_name">My Events</string>
+    <string name="creador">Creador</string>
+    <string name="lugar">Lugar</string>
+    <string name="fecha">Fecha</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
+    <string name="likes">Likes</string>
+    <string name="foto">Foto</string>
+    <string name="activo">Activo</string>
+    <string name="enviar">Enviar</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="login">Inicia sesion con tu cuenta!</string>
+    <string name="title_activity_init">My Events</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="enter">Entrar</string>
+    <string name="createUser">Crear cuenta</string>
+    <string name="createEvent">Crear evento</string>
+    <string name="searchEvent">Buscar evento</string>
+    <string name="title_activity_my_events">MyEvents</string>
+    <string name="userImageCab">Imagen del usuario</string>
+    <string name="myEvents">Mis eventos</string>
+    <string name="rest">Quedan 3 días</string>
+    <string name="title_activity_create_event">MiEvents</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="insertTitle">Introduce un título</string>
+    <string name="insertDesc">Describe tu evento (max 150 caracteres)</string>
+    <string name="insertAddress">Introduce una dirección</string>
+    <string name="pick_date">Hora</string>
+    <string name="hora">hh:mm</string>
+    <string name="date">DD/MM/AAAA</string>
+    <string name="showMap">Ver en mapa</string>
+    <string name="title_activity_menu">MyEvents</string>
+        <string name="search">Buscar</string>
+          <string name="fav">Favoritos</string>
+            <string name="pref">Preferencias</string>
+              <string name="newEvent">Nuevo</string>
+
+</resources>

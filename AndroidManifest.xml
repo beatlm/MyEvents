@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.beat.myevents"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.beat.myevents.CreateEventActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.beat.myevents.ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
+        <activity
+            android:name="com.beat.myevents.Init"
+            android:label="@string/title_activity_init" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.beat.myevents.MyEvents"
+            android:label="@string/title_activity_my_events" >
+        </activity>
+        <activity
+            android:name="com.beat.myevents.CreateEvent"
+            android:label="@string/title_activity_create_event" >
+        </activity>
+        <activity
+            android:name="com.beat.myevents.MenuActivity"
+            android:label="@string/title_activity_menu" >
+        </activity>
+    </application>
+
+</manifest>

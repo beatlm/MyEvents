@@ -1,0 +1,126 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/cab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/userNameCab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/userPhotoCab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/userImageCab"
+            android:src="@drawable/abc_spinner_ab_focused_holo_light" />
+
+        <TextView
+            android:id="@+id/myEventsCab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/myEvents" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insertTitle" />
+
+    <EditText
+        android:id="@+id/createEventTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:id="@+id/selectDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDatePickerDialog"
+            android:text="@string/fecha"
+              style="@style/Button" />
+
+        <TextView
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hora" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showTimePickerDialog"
+            android:text="@string/pick_date"
+          style="@style/Button" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insertAddress" />
+
+    <EditText
+        android:id="@+id/createAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPostalAddress" 
+        >
+
+    </EditText>
+    
+     <Button
+
+            android:onClick="openMap"
+            android:text="@string/showMap" 
+            style="@style/Button"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insertDesc" />
+
+    <EditText
+        android:inputType="textMultiLine" 
+        android:id="@+id/createDesc"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:lines="3"
+        android:scrollbars="vertical"
+        android:ems="200" />
+    
+    <TextView  android:id="@+id/latitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Latitud" />
+    
+    <TextView  android:id="@+id/longitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Longitud" />
+
+    <Button
+        android:id="@+id/btnCreateEvent"
+        style="@style/Button"
+        android:text="@string/createEvent" 
+        android:onClick="createEvent"/>
+
+</LinearLayout>
