@@ -45,6 +45,14 @@
             android:name="com.beat.myevents.MenuActivity"
             android:label="@string/title_activity_menu" >
         </activity>
+        <activity
+            android:name="com.beat.myevents.PrefActivity"
+            android:label="@string/title_activity_pref" >
+        </activity>
+        <activity
+            android:name="com.beat.myevents.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
     </application>
 
 </manifest>

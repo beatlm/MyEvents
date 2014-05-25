@@ -3,66 +3,39 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
       
-
-    <LinearLayout 
-          android:id="@+id/cab"
+<com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:orientation="horizontal">
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
 
-        <TextView
-            android:id="@+id/userNameCab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-             />
-        <ImageView
-            android:id="@+id/userPhotoCab"
-            android:contentDescription="@string/userImageCab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/abc_spinner_ab_focused_holo_light" />
-
-        <TextView
-            android:id="@+id/myEventsCab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/myEvents" />
-  </LinearLayout>
-        <LinearLayout
-            android:id="@+id/myEventsList"
+        <RelativeLayout
+          
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" 
             >
-        </LinearLayout>
-        
-        
-        <!--  PIE de pagina -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
+            <ScrollView
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                >
+<LinearLayout android:id="@+id/myEventsList"
+    android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
-     
- <Button
-     android:id="@+id/buttonCreateEvent"
-     android:layout_width="164dp"
-     android:layout_height="wrap_content"
-     android:text="@string/createEvent"
-     android:onClick="goToCreateEvent" 
-           style="@style/Button"/>
+            android:orientation="vertical" ></LinearLayout>
             
-             <Button
-        android:id="@+id/buttonSearchEvent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/searchEvent"
-              style="@style/Button" />
-            
-            
-            </LinearLayout> 
+            </ScrollView>
+
+        </RelativeLayout>
+        
+        
+    
+
+   
         
   </LinearLayout>
   

@@ -48,8 +48,8 @@ public class MyEvents extends ActionBarActivity {
 
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
-		TextView t = (TextView) findViewById(R.id.userNameCab);
-		t.setText(usuario);
+		Cabecera c= (Cabecera)findViewById(R.id.cabecera);
+		c.setUsuario(usuario);
 
 		// Obtenemos los eventos del usuario
 
@@ -186,7 +186,7 @@ public class MyEvents extends ActionBarActivity {
 						String titulo = jsonChildNode.optString("titulo")
 								.toString();
 
-						Log.d("beatlm", "" + fecha + "-" + lugar + "-" + titulo);
+						Log.d("beatlm", "FECHA: " + fecha + " LUGAR: " + lugar + "TITULO" + titulo);
 
 						
 						// AQUI RECOGEMOS LOS DATOS Y LOS PASAMOS A LA PANTALLA

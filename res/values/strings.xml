@@ -36,9 +36,22 @@
     <string name="date">DD/MM/AAAA</string>
     <string name="showMap">Ver en mapa</string>
     <string name="title_activity_menu">MyEvents</string>
-        <string name="search">Buscar</string>
-          <string name="fav">Favoritos</string>
-            <string name="pref">Preferencias</string>
-              <string name="newEvent">Nuevo</string>
+    <string name="search">Buscar</string>
+    <string name="fav">Favoritos</string>
+    <string name="pref">Preferencias</string>
+    <string name="newEvent">Nuevo</string>
+        <string name="notif">Notificaciones</string>
+          
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="darkBlue"> #1D5264</color>
+    <color name="blue">  #26738c</color>
+    <color name="gray">#BBC1C3</color>
+
+    <string name="title_activity_pref">MyEvents</string>
+    <string name="title_activity_search">MyEvents - Búsqueda</string>
+        <string name="exit">Salir</string>
+        <string name="logedUser" >Usuario Logado:</string>
 
 </resources>

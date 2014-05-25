@@ -35,6 +35,7 @@ public class CreateEventActivity extends ActionBarActivity {
 private double latitud;
 private double longitud;
 private String usuario;
+private String fechaInput;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,6 +53,9 @@ private String usuario;
 		
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
+		
+		Cabecera c= (Cabecera)findViewById(R.id.cabecera);
+		c.setUsuario(usuario);
 
 	}
 
@@ -62,18 +66,20 @@ private String usuario;
 
 		result.put(Constants.CREADOR, usuario);
 		 
-
+		result.put(Constants.PRECIO, 0);
 		edit = (EditText) findViewById(R.id.createAddress);
 		String lugar = edit.getText().toString();
-		 
+		
+		edit = (EditText) findViewById(R.id.createEventTitle);
+		String titulo = edit.getText().toString();
+		result.put(Constants.TITULO, titulo);
 		result.put(Constants.LUGAR, lugar);
 
-		TextView tv = (TextView) findViewById(R.id.datePicker);
-		String fecha = tv.getText().toString();
-		tv = (TextView) findViewById(R.id.timePicker);
-		 fecha = fecha+" "+tv.getText().toString();
+	
+		TextView tv = (TextView) findViewById(R.id.timePicker);
+		 String hora = tv.getText().toString();
 	 
-		result.put(Constants.FECHA, fecha);
+		result.put(Constants.FECHA, fechaInput+" "+hora);
 
 		edit = (EditText) findViewById(R.id.createDesc);
 		String descripcion = edit.getText().toString();
@@ -83,10 +89,10 @@ private String usuario;
 		result.put(Constants.LONGITUD, longitud);
 		result.put(Constants.LIKES, 0);
 		result.put(Constants.FOTO, "FOTO");
-		result.put(Constants.ACTIVO, true);
+	
  
 		 
-			Log.d("beatlm", "result:"+result);
+		Log.d("beatlm", "result:" + result);
 			//WebServices.post(result);
 			
 			
@@ -148,6 +154,7 @@ private String usuario;
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			TextView time = (TextView) findViewById(R.id.datePicker);
 			time.setText(day + "-" + month + "-" + year);
+			fechaInput=year+"-"+month+"-"+day;
 		}
 	}
 
@@ -221,6 +228,7 @@ private String usuario;
 	private class CreateEvent extends AsyncTask<Map<String, Object>, Void, Void> {
 
 		private String Error = null;
+		private boolean Ok;
 		private ProgressDialog Dialog = new ProgressDialog(
 				CreateEventActivity.this);
 	 private Map<String, Object> data;
@@ -241,7 +249,7 @@ private String usuario;
 		@Override
 		protected Void doInBackground(Map<String, Object>... params) {
 			  try {
-				WebServices.post(params[0]);
+			Ok=	WebServices.post(params[0]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				Error=e.getMessage();
@@ -255,13 +263,21 @@ private String usuario;
 
 			Dialog.dismiss();
 
-			if (Error != null) {
+			if (Error != null || !Ok) {
 				Log.d("beatlm", "Error onpostexecute " + Error); // uiUpdate.setText("Output : "+Error);
+				Toast toast = Toast.makeText(getApplicationContext(), "No se  ha podido crear el evento, por favor vuelve a intentarlo",
+						Toast.LENGTH_LONG);
+				toast.show();
 
 			} else {
 
-				Toast toast = Toast.makeText(getApplicationContext(), "Evento creado con Žxito!",  Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(getApplicationContext(), "Evento creado con Žxito!",  Toast.LENGTH_LONG);
 				toast.show();
+				
+				Intent intent  = new Intent(CreateEventActivity.this, MyEvents.class);
+				intent.putExtra(Constants.USERNAME, usuario);
+
+				startActivity(intent);
 			}
 
 		}

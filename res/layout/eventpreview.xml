@@ -27,7 +27,7 @@
 <TextView
         android:id="@+id/prevTitle"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:text="@string/creador"
         style="@style/TitleEvent" />
 
@@ -35,7 +35,7 @@
     
      <LinearLayout 
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="50dp"
     android:background="@drawable/prevevent"
     android:orientation="horizontal" >
      <TextView
@@ -43,23 +43,30 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
       
+        android:text="23"
+      
         />
       <TextView
         android:id="@+id/prevMonth"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+     
+           android:text="10"
        
         />
       <TextView
         android:id="@+id/prevYear"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+       
+           android:text="1980"
   
       />
        <TextView
         android:id="@+id/prevHour"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+         android:text="23:00"
       
        />
           
@@ -69,7 +76,7 @@
         android:id="@+id/prevRest"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-      
+        android:text="Quedan 50 días"
         style="@style/LightFont"
          />
  

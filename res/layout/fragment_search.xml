@@ -1,0 +1,42 @@
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+ 
+        android:layout_toLeftOf="@+id/linearLayout1"
+        android:orientation="vertical" >
+
+       <com.beat.myevents.Cabecera
+           android:id="@+id/cabecera"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" >
+       </com.beat.myevents.Cabecera>
+
+    <LinearLayout
+        android:id="@+id/buscador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/userSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" 
+            android:hint="@string/user">
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/search" />
+        
+    </LinearLayout>
+ 
+    </LinearLayout>
+
+ 
