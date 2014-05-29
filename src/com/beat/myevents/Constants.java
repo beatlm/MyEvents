@@ -12,7 +12,9 @@ public class Constants {
 	  public final static String FOTO = "foto";
 	  public final static String TITULO = "titulo";
 	  public final static String PRECIO = "precio";
+	  public final static String ID = "id";
 	public static final String GET_OWN_EVENTS = "http://eventos.hol.es/php/getEventsByCreator.php";
+	public static final String GET_DETAIL = "http://eventos.hol.es/php/getEventDetail.php";
 	
 	public static final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; 
 }

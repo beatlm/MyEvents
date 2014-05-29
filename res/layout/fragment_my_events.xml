@@ -1,43 +1,28 @@
-      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-      
-<com.beat.myevents.Cabecera
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.beat.myevents.Cabecera
         android:id="@+id/cabecera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </com.beat.myevents.Cabecera>
 
-        <RelativeLayout
-          
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" 
-            >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-            <ScrollView
-                
+      
+
+            <ListView
+                android:id="@+id/myEventsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                >
-<LinearLayout android:id="@+id/myEventsList"
-    android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" ></LinearLayout>
-            
-            </ScrollView>
+                android:orientation="vertical" >
+            </ListView>
 
-        </RelativeLayout>
-        
-        
-    
+    </RelativeLayout>
 
-   
-        
-  </LinearLayout>
-  
-
- 
+</LinearLayout>

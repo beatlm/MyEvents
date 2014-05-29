@@ -53,6 +53,10 @@
             android:name="com.beat.myevents.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
+        <activity
+            android:name="com.beat.myevents.DetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
     </application>
 
 </manifest>

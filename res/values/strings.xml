@@ -40,8 +40,7 @@
     <string name="fav">Favoritos</string>
     <string name="pref">Preferencias</string>
     <string name="newEvent">Nuevo</string>
-        <string name="notif">Notificaciones</string>
-          
+    <string name="notif">Notificaciones</string>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
@@ -51,7 +50,8 @@
 
     <string name="title_activity_pref">MyEvents</string>
     <string name="title_activity_search">MyEvents - Búsqueda</string>
-        <string name="exit">Salir</string>
-        <string name="logedUser" >Usuario Logado:</string>
+    <string name="exit">Salir</string>
+    <string name="logedUser">Usuario Logado:</string>
+    <string name="title_activity_detail">MyEvents</string>
 
 </resources>

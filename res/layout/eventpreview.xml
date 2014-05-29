@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/prevevent"
     android:orientation="horizontal"
-    android:onClick="showEvent"
+  
    >
 
     
@@ -39,29 +39,14 @@
     android:background="@drawable/prevevent"
     android:orientation="horizontal" >
      <TextView
-        android:id="@+id/prevDay"
+        android:id="@+id/prevDate"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
       
         android:text="23"
       
         />
-      <TextView
-        android:id="@+id/prevMonth"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
      
-           android:text="10"
-       
-        />
-      <TextView
-        android:id="@+id/prevYear"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-       
-           android:text="1980"
-  
-      />
        <TextView
         android:id="@+id/prevHour"
         android:layout_width="wrap_content"

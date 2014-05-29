@@ -1,31 +1,26 @@
 package com.beat.myevents;
 
+ 
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.StringTokenizer;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,73 +29,46 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.os.Build;
 
-public class MyEvents extends ActionBarActivity implements OnItemClickListener {
-	private String usuario;
-	private ListView lo ;
+public class DetailActivity extends ActionBarActivity {
+private String usuario;
+private Long id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_my_events);
-		 lo = (ListView) findViewById(R.id.myEventsList);
-		// Obtenemos el nombre de usuario y la foto
+		setContentView(R.layout.fragment_detail);
 
+		
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
+		 id=intent.getLongExtra(Constants.ID, 0);
 		Cabecera c= (Cabecera)findViewById(R.id.cabecera);
 		c.setUsuario(usuario);
 
 		// Obtenemos los eventos del usuario
 
-		String serverURL = Constants.GET_OWN_EVENTS;
+		String serverURL = Constants.GET_DETAIL;
 
 		// Use AsyncTask execute Method To Prevent ANR Problem
-		new GetMyEvents().execute(serverURL);
-		lo.setOnItemClickListener(this);
-
-		
-	}
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long id) {
- 
-		Log.d("beatlm","id+"+id);
-		Intent intent = new Intent(this, DetailActivity.class);
-		intent.putExtra(Constants.USERNAME, usuario);
-		intent.putExtra(Constants.ID, id);
-		startActivity(intent);
-		
-	}
-	
-	public void goToCreateEvent(View v){
-		
-		
-		 Intent intent=new Intent(this, CreateEventActivity.class);
-	    intent.putExtra(Constants.USERNAME, usuario);
-	
-	     startActivity(intent);
-		
-		
+		new GetDetail().execute(serverURL);
+		 
+	 
 	}
 
-
-
-	private class GetMyEvents extends AsyncTask<String, View, Void> {
+	private class GetDetail extends AsyncTask<String, View, Void> {
 
 		private String Content;
 		private String Error = null;
-		private ProgressDialog Dialog = new ProgressDialog(MyEvents.this);
+		private ProgressDialog Dialog = new ProgressDialog(DetailActivity.this);
 
 		// String data ="";
 
 		protected void onPreExecute() {
 
-			Dialog.setMessage("Cargando eventos...");
+			Dialog.setMessage("Cargando datos...");
 			Dialog.show();
 
 		}
@@ -120,8 +88,8 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 				OutputStreamWriter wr = new OutputStreamWriter(
 						conn.getOutputStream());
 
-				String data = URLEncoder.encode(Constants.CREADOR, "UTF-8")
-						+ "=" + URLEncoder.encode(usuario, "UTF-8");
+				String data = URLEncoder.encode(Constants.ID, "UTF-8")
+						+ "=" + URLEncoder.encode(id.toString(), "UTF-8");
 				wr.write(data);
 
 				wr.flush();
@@ -189,45 +157,43 @@ Log.d("beatlm","Content: "+Content);
 								.toString();
 						long id= Long.parseLong(jsonChildNode.optString("id"));
 
+						String descripcion = jsonChildNode.optString("descripcion")
+								.toString();
+						
+						String precio = jsonChildNode.optString("precio")
+								.toString();
+						String likes = jsonChildNode.optString("likes")
+								.toString();
+						
 						Log.d("beatlm", "FECHA: " + fecha + " LUGAR: " + lugar + "TITULO" + titulo);
 
+						TextView t=(TextView)findViewById(R.id.detailTitle);
+						t.setText(titulo);
+						
+						t=(TextView)findViewById(R.id.detailAddress);
+						t.setText(lugar);
+						
+						t=(TextView)findViewById(R.id.detailDate);
+						t.setText(fecha);
+						
+						t=(TextView)findViewById(R.id.detailDesc);
+						t.setText(descripcion);
+						
+						t=(TextView)findViewById(R.id.detailPrice);
+						t.setText(precio);
+						
+						t=(TextView)findViewById(R.id.detailLikes);
+						t.setText(likes);
 						
 						
 
-						// Calculamos los d’as que quedan
 
-						StringTokenizer st = new StringTokenizer(fecha, "-");
-						String year = st.nextToken();
-						String month = st.nextToken();
-						String tmp = st.nextToken();
-						st = new StringTokenizer(tmp);
-						String day = st.nextToken();
-						String hora = st.nextToken();
-						String fec=day+"/"+month+"/"+year;
-
-						Calendar hoy = Calendar.getInstance();
-						Calendar f = Calendar.getInstance();
-
-						f.set(Integer.parseInt(year),
-								Integer.parseInt(month) - 1,
-								Integer.parseInt(day));
-
-						long dif = (f.getTimeInMillis() - hoy.getTimeInMillis())
-								/ Constants.MILLSECS_PER_DAY;
-
-						Log.d("beatlm", "DAY:" + day + " MONTH:" + month
-								+ " YEAR:" + year + " HORA:" + hora);
-				
-
-						Event ev= new Event( id,  titulo,  fec,    hora,  "Quedan "+dif+" d’as",  null);
-						data.add(ev);
+					
 
 					}
 
-					Log.d("beatlm", "data size+"+data.size());
-					  EventAdapter adapter = new EventAdapter(MyEvents.this, data);
-						
-				        lo.setAdapter(adapter);
+			
+					
 				        
 				} catch (JSONException e) {
 
@@ -238,8 +204,6 @@ Log.d("beatlm","Content: "+Content);
 		}
 
 	}
+ 
 
-
-
-	
 }
