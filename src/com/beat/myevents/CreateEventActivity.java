@@ -153,6 +153,7 @@ private String fechaInput;
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			TextView time = (TextView) findViewById(R.id.datePicker);
+			month++;
 			time.setText(day + "-" + month + "-" + year);
 			fechaInput=year+"-"+month+"-"+day;
 		}

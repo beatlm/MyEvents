@@ -1,7 +1,11 @@
 package com.beat.myevents;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Date;
+import java.util.Locale;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -35,6 +39,7 @@ public EventAdapter(Activity activity, ArrayList<Event>items){
 	return items.get(arg0).getId();
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public View getView(int pos, View convertView, ViewGroup arg2) {
 		View v= convertView;
@@ -61,6 +66,22 @@ public EventAdapter(Activity activity, ArrayList<Event>items){
 	TextView prev=(TextView)v.findViewById(R.id.prevRest);
 	prev.setText(e.getRest());
 	
+	//Si la fecha es anterior a hoy el fondo ser‡ rojo
+ 
+	Date date = null;
+	try {
+		date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(e.getFecha());
+	} catch (ParseException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	Date hoy = new Date();
+
+	if(hoy.after(date)){
+		arg2.setBackgroundColor(R.color.red);
+	v.setBackgroundColor(R.color.red);
+	
+	}
 	return v;
 	        
 	}

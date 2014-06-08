@@ -1,42 +1,141 @@
-   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
- 
-        android:layout_toLeftOf="@+id/linearLayout1"
-        android:orientation="vertical" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_toLeftOf="@+id/linearLayout1"
+    android:orientation="vertical" >
 
-       <com.beat.myevents.Cabecera
-           android:id="@+id/cabecera"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" >
-       </com.beat.myevents.Cabecera>
+    <com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
 
     <LinearLayout
         android:id="@+id/buscador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:orientation="horizontal">
+        android:orientation="horizontal" >
 
         <EditText
             android:id="@+id/userSearch"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10" 
-            android:hint="@string/user">
+            android:ems="10"
+            android:hint="@string/user" >
 
             <requestFocus />
         </EditText>
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/searchButton"
+    <LinearLayout
+        android:id="@+id/selectDateI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/datePickerI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/search" />
-        
-    </LinearLayout>
- 
+            android:layout_weight="0.09"
+            android:padding="15dp"
+            android:text="@string/date" />
+
+        <Button
+            android:id="@+id/datePickerIButton"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:onClick="showDatePickerDialog"
+            android:padding="15dp"
+            android:text="@string/fechaI" />
     </LinearLayout>
 
- 
+    <LinearLayout
+        android:id="@+id/selectDateF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:id="@+id/datePickerF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.09"
+            android:padding="15dp"
+            android:text="@string/date" />
+
+        <Button
+             android:id="@+id/datePickerFButton"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:onClick="showDatePickerDialog"
+            android:padding="15dp"
+            android:text="@string/fechaF" />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="@string/tipo" />
+
+            <Spinner
+                android:id="@+id/tipos"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/searchPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/price" />
+
+        <EditText
+            android:id="@+id/searchPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:inputType="number"
+            android:padding="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/near" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/searchButton"
+        style="@style/Button"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:text="@string/search" />
+
+</LinearLayout>

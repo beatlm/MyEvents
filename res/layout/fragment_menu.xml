@@ -1,74 +1,80 @@
-   
-     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+id/cab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cab"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
     <com.beat.myevents.Cabecera
         android:id="@+id/cabecera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </com.beat.myevents.Cabecera>
-<TableLayout 
-    android:id="@+id/tableLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_vertical|center_horizontal" >
 
-
-
-    <TableRow
-        android:id="@+id/tableRow1"
+    <TableLayout
+        android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp" >
+        android:layout_gravity="center_vertical|center_horizontal" >
 
-        <Button
-            android:id="@+id/btnFav"
-            style="@style/Button"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="@string/fav" />
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp" >
 
-        <Button
-            android:id="@+id/btnSearch"
-   android:layout_height="120dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/search" 
-             style="@style/Button"/>
-    </TableRow>
+            <Button
+                android:id="@+id/btnFav"
+                style="@style/Button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/fav"
+                android:text="@string/fav"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp" />
 
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp" >
+            <Button
+                android:id="@+id/btnSearch"
+                style="@style/Button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/buscar"
+                android:text="@string/search"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/btnAdd"
-            style="@style/Button"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:text="@string/newEvent" />
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" >
 
-        <Button
-            android:id="@+id/btnPref"
-    android:layout_height="120dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/pref" 
-             style="@style/Button"/>
-    </TableRow>
+            <Button
+                android:id="@+id/btnAdd"
+                style="@style/Button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginRight="10dp"
+                 android:background="@drawable/nuevo"
+                  android:textColor="@color/darkBlue"
+                android:textSize="20sp" 
+                android:text="@string/newEvent" />
 
-</TableLayout>
+            <Button
+                android:id="@+id/btnPref"
+                style="@style/Button"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                   android:background="@drawable/prefs"
+                  android:textColor="@color/darkBlue"
+                android:textSize="20sp" 
+                android:text="@string/pref" />
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>

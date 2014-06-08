@@ -1,82 +1,102 @@
 package com.beat.myevents;
 
+import java.util.Arrays;
+
+import com.facebook.FacebookException;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
+import com.facebook.widget.LoginButton;
+
 import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 public class Init extends ActionBarActivity {
 
+	private String TAG = "MainActivity";
 
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		super.onActivityResult(requestCode, resultCode, data);
+
+		Session.getActiveSession().onActivityResult(this, requestCode,
+				resultCode, data);
+
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_init);
+		setContentView(R.layout.fragment_init);
 
-		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
-	}
+		LoginButton authButton = (LoginButton) findViewById(R.id.authButton);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+		// session state call back event
+	//	authButton.setReadPermissions(Arrays
+		//		.asList("user_likes", "user_status"));
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.init, menu);
-		return true;
-	}
+		authButton.setSessionStatusCallback(new Session.StatusCallback() {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+			@Override
+			public void call(Session session, SessionState state,
+					Exception exception) {
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+				if (session.isOpened()) {
 
-		public PlaceholderFragment() {
-		}
+					Log.i(TAG, "Access Token" + session.getAccessToken());
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_init, container,
-					false);
-			return rootView;
-		}
-	}
-	
-	public void logar(View v){
-		Log.d("beatlm", "Entramos en logar");	
-		EditText e=(EditText)findViewById(R.id.textUser);
-		String user=e.getText().toString();
+					Request.newMeRequest(session,
+
+					new Request.GraphUserCallback() {
+
+						@Override
+						public void onCompleted(GraphUser user,
+								Response response) {
+
+							if (user != null) {
+						
+								Log.i(TAG, "User ID " + user.getId());
+
+								Log.i(TAG, "Email " + user.asMap().get("email"));
  
-		Log.d("beatlm", user);
-		
-		 Intent intent = new Intent(this, MenuActivity.class);
-	       intent.putExtra(Constants.USERNAME, user);
-	
-	        startActivity(intent);
-		
+								Intent i = new Intent(Init.this,
+										MenuActivity.class);
+								i.putExtra(Constants.USERNAME, user.getName());
+
+								startActivity(i);
+							}
+
+						}
+
+					}).executeAsync();
+
+				}
+
+			}
+
+		});
+
 	}
-	
+
+	public void logar(View v) {
+		Log.d("beatlm", "Entramos en logar");
+		EditText e = (EditText) findViewById(R.id.textUser);
+		String user = e.getText().toString();
+
+		Log.d("beatlm", user);
+
+		Intent intent = new Intent(this, MenuActivity.class);
+		intent.putExtra(Constants.USERNAME, user);
+
+		startActivity(intent);
+
+	}
 
 }

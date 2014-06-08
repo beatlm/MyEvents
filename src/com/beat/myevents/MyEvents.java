@@ -42,53 +42,127 @@ import android.widget.TextView;
 
 public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 	private String usuario;
-	private ListView lo ;
+	private ListView lo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_my_events);
-		 lo = (ListView) findViewById(R.id.myEventsList);
+		lo = (ListView) findViewById(R.id.myEventsList);
 		// Obtenemos el nombre de usuario y la foto
 
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
-		Cabecera c= (Cabecera)findViewById(R.id.cabecera);
+		Cabecera c = (Cabecera) findViewById(R.id.cabecera);
 		c.setUsuario(usuario);
 
-		// Obtenemos los eventos del usuario
+		// Mostramos los datos obtenidos del buscador
+		String data = intent.getStringExtra(Constants.DATA);
+		if (data != null) {
+			mostrarDatos(data);
 
-		String serverURL = Constants.GET_OWN_EVENTS;
+		} else {
+			// Obtenemos los eventos del usuario
+			String serverURL = Constants.GET_OWN_EVENTS;
 
-		// Use AsyncTask execute Method To Prevent ANR Problem
-		new GetMyEvents().execute(serverURL);
-		lo.setOnItemClickListener(this);
+			new GetMyEvents().execute(serverURL);
+			lo.setOnItemClickListener(this);
+		}
 
-		
 	}
+
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long id) {
- 
-		Log.d("beatlm","id+"+id);
+
+		Log.d("beatlm", "id+" + id);
 		Intent intent = new Intent(this, DetailActivity.class);
 		intent.putExtra(Constants.USERNAME, usuario);
 		intent.putExtra(Constants.ID, id);
 		startActivity(intent);
-		
-	}
-	
-	public void goToCreateEvent(View v){
-		
-		
-		 Intent intent=new Intent(this, CreateEventActivity.class);
-	    intent.putExtra(Constants.USERNAME, usuario);
-	
-	     startActivity(intent);
-		
-		
+
 	}
 
+	public void goToCreateEvent(View v) {
 
+		Intent intent = new Intent(this, CreateEventActivity.class);
+		intent.putExtra(Constants.USERNAME, usuario);
+
+		startActivity(intent);
+
+	}
+
+	public void mostrarDatos(String datos) {
+		JSONObject jsonResponse;
+
+		try {
+			Log.d("beatlm", "Content: " + datos);
+			jsonResponse = new JSONObject(datos);
+
+			JSONArray jsonMainNode = jsonResponse.optJSONArray("Events");
+
+			int lengthJsonArr = jsonMainNode.length();
+			Log.d("beatlm", "lengthJsonArr: " + lengthJsonArr);
+			if (lengthJsonArr > 0) {
+				ArrayList<Event> data = new ArrayList<Event>();
+
+				for (int i = 0; i < lengthJsonArr; i++) {
+
+					JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
+
+					String fecha = jsonChildNode.optString("fecha").toString();
+					String lugar = jsonChildNode.optString("lugar").toString();
+					String titulo = jsonChildNode.optString("titulo")
+							.toString();
+					long id = Long.parseLong(jsonChildNode.optString("id"));
+
+					Log.d("beatlm", "FECHA: " + fecha + " LUGAR: " + lugar
+							+ "TITULO" + titulo);
+
+					// Calculamos los d’as que quedan
+
+					StringTokenizer st = new StringTokenizer(fecha, "-");
+					String year = st.nextToken();
+					String month = st.nextToken();
+					String tmp = st.nextToken();
+					st = new StringTokenizer(tmp);
+					String day = st.nextToken();
+					String hora = st.nextToken();
+					String fec = day + "/" + month + "/" + year;
+
+					Calendar hoy = Calendar.getInstance();
+					Calendar f = Calendar.getInstance();
+
+					f.set(Integer.parseInt(year), Integer.parseInt(month) - 1,
+							Integer.parseInt(day));
+
+					long dif = (f.getTimeInMillis() - hoy.getTimeInMillis())
+							/ Constants.MILLSECS_PER_DAY;
+
+					Log.d("beatlm", "DAY:" + day + " MONTH:" + month + " YEAR:"
+							+ year + " HORA:" + hora);
+
+					Event ev = new Event(id, titulo, fec, hora, "Quedan " + dif
+							+ " d’as", null);
+					data.add(ev);
+					Log.d("beatlm", "data size+" + data.size());
+					EventAdapter adapter = new EventAdapter(MyEvents.this, data);
+
+					lo.setAdapter(adapter);
+
+				}
+			} else {// No hay datos
+				TextView t = new TextView(this);
+				t.setText("No hay eventos");
+				lo.addView(t);
+
+			}
+
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		}
+
+	}
 
 	private class GetMyEvents extends AsyncTask<String, View, Void> {
 
@@ -146,8 +220,7 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 			} finally {
 				try {
 					reader.close();
-				}
-				catch (Exception ex) {
+				} catch (Exception ex) {
 				}
 			}
 			return null;
@@ -161,85 +234,72 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 				Log.d("beatlm", "Error onpostexecute"); // uiUpdate.setText("Output : "+Error);
 
 			} else {
-
-				JSONObject jsonResponse;
-
-				try {
-Log.d("beatlm","Content: "+Content);
-					jsonResponse = new JSONObject(Content);
-
-					JSONArray jsonMainNode = jsonResponse
-							.optJSONArray("Events");
-
-					int lengthJsonArr = jsonMainNode.length();
-					Log.d("beatlm","lengthJsonArr: "+lengthJsonArr);
-					
-					ArrayList<Event> data = new ArrayList<Event>();
-
-					for (int i = 0; i < lengthJsonArr; i++) {
-
-						JSONObject jsonChildNode = jsonMainNode
-								.getJSONObject(i);
-
-						String fecha = jsonChildNode.optString("fecha")
-								.toString();
-						String lugar = jsonChildNode.optString("lugar")
-								.toString();
-						String titulo = jsonChildNode.optString("titulo")
-								.toString();
-						long id= Long.parseLong(jsonChildNode.optString("id"));
-
-						Log.d("beatlm", "FECHA: " + fecha + " LUGAR: " + lugar + "TITULO" + titulo);
-
-						
-						
-
-						// Calculamos los d’as que quedan
-
-						StringTokenizer st = new StringTokenizer(fecha, "-");
-						String year = st.nextToken();
-						String month = st.nextToken();
-						String tmp = st.nextToken();
-						st = new StringTokenizer(tmp);
-						String day = st.nextToken();
-						String hora = st.nextToken();
-						String fec=day+"/"+month+"/"+year;
-
-						Calendar hoy = Calendar.getInstance();
-						Calendar f = Calendar.getInstance();
-
-						f.set(Integer.parseInt(year),
-								Integer.parseInt(month) - 1,
-								Integer.parseInt(day));
-
-						long dif = (f.getTimeInMillis() - hoy.getTimeInMillis())
-								/ Constants.MILLSECS_PER_DAY;
-
-						Log.d("beatlm", "DAY:" + day + " MONTH:" + month
-								+ " YEAR:" + year + " HORA:" + hora);
-				
-
-						Event ev= new Event( id,  titulo,  fec,    hora,  "Quedan "+dif+" d’as",  null);
-						data.add(ev);
-
-					}
-
-					Log.d("beatlm", "data size+"+data.size());
-					  EventAdapter adapter = new EventAdapter(MyEvents.this, data);
-						
-				        lo.setAdapter(adapter);
-				        
-				} catch (JSONException e) {
-
-					e.printStackTrace();
-				}
+				mostrarDatos(Content);
+				/*
+				 * JSONObject jsonResponse;
+				 * 
+				 * try { Log.d("beatlm", "Content: " + Content); jsonResponse =
+				 * new JSONObject(Content);
+				 * 
+				 * JSONArray jsonMainNode = jsonResponse
+				 * .optJSONArray("Events");
+				 * 
+				 * int lengthJsonArr = jsonMainNode.length(); Log.d("beatlm",
+				 * "lengthJsonArr: " + lengthJsonArr);
+				 * 
+				 * ArrayList<Event> data = new ArrayList<Event>();
+				 * 
+				 * for (int i = 0; i < lengthJsonArr; i++) {
+				 * 
+				 * JSONObject jsonChildNode = jsonMainNode .getJSONObject(i);
+				 * 
+				 * String fecha = jsonChildNode.optString("fecha") .toString();
+				 * String lugar = jsonChildNode.optString("lugar") .toString();
+				 * String titulo = jsonChildNode.optString("titulo")
+				 * .toString(); long id =
+				 * Long.parseLong(jsonChildNode.optString("id"));
+				 * 
+				 * Log.d("beatlm", "FECHA: " + fecha + " LUGAR: " + lugar +
+				 * "TITULO" + titulo);
+				 * 
+				 * // Calculamos los d’as que quedan
+				 * 
+				 * StringTokenizer st = new StringTokenizer(fecha, "-"); String
+				 * year = st.nextToken(); String month = st.nextToken(); String
+				 * tmp = st.nextToken(); st = new StringTokenizer(tmp); String
+				 * day = st.nextToken(); String hora = st.nextToken(); String
+				 * fec = day + "/" + month + "/" + year;
+				 * 
+				 * Calendar hoy = Calendar.getInstance(); Calendar f =
+				 * Calendar.getInstance();
+				 * 
+				 * f.set(Integer.parseInt(year), Integer.parseInt(month) - 1,
+				 * Integer.parseInt(day));
+				 * 
+				 * long dif = (f.getTimeInMillis() - hoy.getTimeInMillis()) /
+				 * Constants.MILLSECS_PER_DAY;
+				 * 
+				 * Log.d("beatlm", "DAY:" + day + " MONTH:" + month + " YEAR:" +
+				 * year + " HORA:" + hora);
+				 * 
+				 * Event ev = new Event(id, titulo, fec, hora, "Quedan " + dif +
+				 * " d’as", null); data.add(ev);
+				 * 
+				 * }
+				 * 
+				 * Log.d("beatlm", "data size+" + data.size()); EventAdapter
+				 * adapter = new EventAdapter(MyEvents.this, data);
+				 * 
+				 * lo.setAdapter(adapter);
+				 * 
+				 * } catch (JSONException e) {
+				 * 
+				 * e.printStackTrace(); }
+				 */
 
 			}
 		}
 
 	}
 
-
-
-	
 }
