@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    android:orientation="horizontal" >
+    
+    <ImageView
+        android:id="@+id/prevPhoto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/abc_spinner_ab_focused_holo_light"
+        android:text="@string/myEvents" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/prevevent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/prevTitle"
+            style="@style/TitleEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/creador"
+            android:textColor="@color/darkBlue"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/prevDate"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/prevTitle"
+            android:layout_below="@+id/prevTitle"
+            android:fontFamily="sans-serif-light"
+            android:text="23"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/prevRest"
+            android:layout_below="@+id/prevRest"
+            android:fontFamily="sans-serif-light"
+            android:paddingTop="10dp"
+            android:text="precio"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/prevHour"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignBaseline="@+id/prevDate"
+            android:layout_alignBottom="@+id/prevDate"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="27dp"
+            android:paddingLeft="5dp"
+            android:text="23:00"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/prevRest"
+            style="@style/LightFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/prevDate"
+            android:layout_below="@+id/prevDate"
+            android:fontFamily="sans-serif"
+            android:text="Quedan 50 días"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/price"
+            android:layout_alignRight="@+id/prevTitle"
+            android:fontFamily="sans-serif-light"
+            android:text="€"
+            android:textColor="@color/blue" />
+
+    </RelativeLayout>
+
+</LinearLayout>

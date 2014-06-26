@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/cab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:background="@color/darkBlue">
+
+        <TextView
+            android:id="@+id/userNameCab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/myEventsCab"
+            android:layout_alignBottom="@+id/myEventsCab"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="34dp"
+            android:text="Nombre"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/myEventsCab"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/myEvents"
+            android:textColor="@color/white"
+            android:color="@color/blue" />
+
+    </RelativeLayout>
+    
+

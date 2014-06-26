@@ -50,5 +50,18 @@
         <item name="android:background">@drawable/button</item>
         
     </style>
+    
+       <style name="ButtonBig" >
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textColor">#e2e6e8</item>
+        <item name="android:textColorHighlight">#FFFF00</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textSize">19sp</item>
+   
+ 
+        <item name="android:background">@drawable/button</item>
+        
+    </style>
 
 </resources>

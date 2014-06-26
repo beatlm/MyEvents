@@ -9,12 +9,14 @@ private String title;
 	private String rest;
 	private String hour;
 	private Drawable photo;
+	private String precio;
+	
 
 	public Event() {		 
 		super();
 	}
 
-	public Event(long id, String title, String fecha, String hour, String rest, Drawable photo) {		 
+	public Event(long id, String title, String fecha, String hour, String rest, Drawable photo,String precio) {		 
 		super();
 		this.id=id;
 		this.title=title;
@@ -22,6 +24,7 @@ private String title;
 
 		this.hour=hour;
 		this.rest=rest;
+		this.setPrecio(precio);
 		//this.photo=photo;
 	}
 	public String getTitle() {
@@ -73,6 +76,14 @@ private String title;
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(String precio) {
+		this.precio = precio;
 	}
 	  
 	

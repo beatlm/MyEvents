@@ -1,0 +1,181 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado" >
+
+    <com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="@string/tipo" />
+
+    <Button
+        android:id="@+id/searchButton"
+        style="@style/Button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="202dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/search"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/userSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cabecera"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/user"
+        android:maxLength="12"
+        android:textColor="@color/black"
+        android:textColorHint="@color/darkBlue" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userSearch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp" >
+
+        <TextView
+            android:id="@+id/datePickerI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/datePickerIButton"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDatePickerDialog"
+            android:padding="15dp"
+            android:text="@string/fechaI" />
+
+        <TextView
+            android:id="@+id/datePickerF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/datePickerFButton"
+            style="@style/Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDatePickerDialog"
+            android:padding="15dp"
+            android:text="@string/fechaF" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/resetDates"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="21dp"
+        android:layout_toRightOf="@+id/tipos"
+        android:gravity="center_vertical|center_horizontal|end"
+        android:onClick="resetDates"
+        android:padding="15dp"
+        android:text="@string/resetDates" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tipos"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp" >
+
+        <TextView
+            android:id="@+id/searchPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-light"
+            android:padding="15dp"
+            android:text="@string/price"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/searchPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="3"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textColor="@color/black" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:padding="15dp"
+            android:text="@string/euro"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/searchButton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginLeft="40dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/near"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="34dp"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="10dp"
+        android:text="@string/tipo"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/tipos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1" />
+
+</RelativeLayout>

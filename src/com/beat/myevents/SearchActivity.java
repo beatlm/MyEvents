@@ -143,6 +143,17 @@ public class SearchActivity extends ActionBarActivity implements
 
 		}
 	}
+	
+	public void resetDates(View v){
+		fechaI=null;
+		fechaF=null;
+		
+		TextView dpI=(TextView)findViewById(R.id.datePickerI);
+		TextView dpF=(TextView)findViewById(R.id.datePickerF);
+		dpI.setText(R.string.date);
+		dpF.setText(R.string.date);
+		
+	}
 
 	public void showDatePickerDialog(View v) {
  
@@ -168,17 +179,17 @@ public class SearchActivity extends ActionBarActivity implements
 
 		public void onDateSet(DatePicker view, int year, int month, int day) {
 			TextView time=null;
-
+			month+=1;
 			if(pulsado==R.id.datePickerIButton){
 			 time = (TextView) findViewById(R.id.datePickerI);
 			 
-				fechaI=year+"-"+month+"-"+day;
+				fechaI=year+"/"+month+"/"+day;
 			}else if(pulsado==R.id.datePickerFButton){
 				 time = (TextView) findViewById(R.id.datePickerF);
-					fechaF=year+"-"+month+"-"+day;
+					fechaF=year+"/"+month+"/"+day;
 			}
-			month+=1;
-			time.setText(day + "-" + month + "-" + year);
+			
+			time.setText(day + "/" + month + "/" + year);
 			
 	
 		}

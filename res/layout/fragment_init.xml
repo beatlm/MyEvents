@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,32 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.beat.myevents.Init$PlaceholderFragment" >
 
-    <TextView
-        android:id="@+id/textLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login" />
-
-
-
-    <EditText
-        android:id="@+id/textUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textLogin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:ems="10"
-        android:hint="@string/user" />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_centerVertical="true"
-        android:text="@string/enter" 
-        android:onClick="logar"
-        style="@style/Button"/>
-    
-      <com.facebook.widget.LoginButton
+    <!--
+           <com.facebook.widget.LoginButton
         android:id="@+id/authButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +17,64 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         />
-    
+    -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/error"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/user" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usuario"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/red" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        style="@style/Button"
+        android:layout_alignLeft="@+id/error"
+        android:layout_alignTop="@+id/error"
+        android:onClick="logar"
+        android:text="@string/enter" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        style="@style/Button"
+        android:layout_alignLeft="@+id/buttonLogin"
+        android:layout_below="@+id/buttonLogin"
+        android:onClick="registrar"
+        android:text="@string/register" />
 
 </RelativeLayout>

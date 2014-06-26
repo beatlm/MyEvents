@@ -1,0 +1,205 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/degradado"
+    android:orientation="vertical" >
+
+    <com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
+
+    <LinearLayout
+        android:id="@+id/selectDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createAddress"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/createEventTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cabecera"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/insertTitle"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+               android:maxLength="30" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/latitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/createAddress"
+        android:layout_marginTop="19dp"
+        android:text="Latitud" />
+
+    <EditText
+        android:id="@+id/createAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button3"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="@string/insertAddress"
+        android:inputType="textPostalAddress"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/longitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/latitud"
+        android:text="Longitud" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createEventTitle"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_toLeftOf="@+id/datePicker"
+        android:onClick="showDatePickerDialog"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/fecha"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignRight="@+id/button1"
+        android:layout_marginRight="102dp"
+        android:paddingLeft="20dp"
+        android:text="@string/date"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/datePicker"
+        android:layout_alignBottom="@+id/datePicker"
+        android:layout_alignRight="@+id/btnCreateEvent"
+        android:layout_marginRight="16dp"
+        android:onClick="showTimePickerDialog"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/pick_date"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="26dp"
+        android:paddingLeft="20dp"
+        android:text="@string/hora"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="34dp"
+        android:paddingLeft="30dp"
+        android:text="@string/insertDesc"
+        android:textColor="@color/darkBlue"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/Button"
+        android:layout_width="250dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/longitud"
+        android:layout_marginLeft="49dp"
+        android:layout_marginTop="24dp"
+        android:onClick="validate"
+        android:text="@string/validateAddress"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/button1"
+        android:text="Valida la direccion para que los usuarios puedan localizarlo en un mapa." />
+
+    <Button
+        android:id="@+id/btnCreateEvent"
+        style="@style/Button"
+        android:layout_width="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:onClick="createEvent"
+        android:text="@string/createEvent"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/createDesc"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="16dp"
+        android:ems="200"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:scrollbars="vertical"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/createDesc"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5dp"
+        android:text="Selecciona un tipo:"
+        android:textColor="@color/darkBlue"
+        android:textSize="25sp" />
+
+    <Spinner
+        android:id="@+id/tipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/price"
+        android:layout_marginTop="10dp"
+        android:background="@color/darkBlue"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

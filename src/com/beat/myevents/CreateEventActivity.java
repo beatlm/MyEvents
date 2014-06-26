@@ -8,6 +8,7 @@ import org.json.JSONException;
 
 import com.beat.lib.WebAddress;
 import com.beat.lib.WebServices;
+ 
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.DialogFragment;
@@ -23,9 +24,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -36,20 +39,21 @@ private double latitud;
 private double longitud;
 private String usuario;
 private String fechaInput;
+private Spinner types;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_create_event);
 		EditText e = (EditText) findViewById(R.id.createAddress);
+		new TypesEvent().execute();
 		
-		
-		e.setOnFocusChangeListener(new OnFocusChangeListener() {
+	/*	e.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
 				if (!hasFocus)
 					validarAddress();
 			}
-		});
+		});*/
 		
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
@@ -159,7 +163,7 @@ private String fechaInput;
 		}
 	}
 
-	private void validarAddress() {
+	private void validate() {
 
 		EditText e = (EditText) findViewById(R.id.createAddress);
 	String	strAddress = e.getText().toString();
@@ -285,6 +289,55 @@ private String fechaInput;
 
 		
 	}
+	
+	
+	private class TypesEvent extends
+	AsyncTask<Map<String, Object>, View, Void> {
 
+private String[] Content;/*
+private String Error = null;*/
+private ProgressDialog Dialog = new ProgressDialog(CreateEventActivity.this);
+
+// String data ="";
+
+protected void onPreExecute() {
+
+/*	Dialog.setMessage("Buscando eventos...");
+	Dialog.show();
+*/
+}
+
+// Call after onPreExecute method
+@Override
+protected Void doInBackground(Map<String, Object>... data) {
+
+	try {
+		Content = WebServices.getTypes();
+	} catch (Exception e) {
+
+		e.printStackTrace();
+	}
+	return null;
+}
+
+protected void onPostExecute(Void unused) {
+
+	Dialog.dismiss();
+
+	ArrayAdapter<String> adaptador =
+	        new ArrayAdapter<String>(CreateEventActivity.this,android.R.layout.simple_spinner_item, Content);
+	
+	 types = (Spinner)findViewById(R.id.tipo);
+	adaptador.setDropDownViewResource(
+	        android.R.layout.simple_spinner_dropdown_item);
+	 
+	types.setAdapter(adaptador);
+
+
+	}
 
 }
+}
+
+
+

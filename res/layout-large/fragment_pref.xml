@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBlue"
+    android:orientation="vertical" >
+
+    <com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/logedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/price"
+        android:layout_marginLeft="34dp"
+        android:layout_toRightOf="@+id/price"
+        android:text="@string/logedUser"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:color="@color/gray" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/logedUser"
+        android:layout_below="@+id/cabecera"
+        android:layout_marginTop="83dp" />
+
+    <TextView
+        android:id="@+id/textNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleButton1"
+        android:layout_alignBottom="@+id/toggleButton1"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:text="@string/notif"
+        android:textColor="@color/gray"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textNotif"
+        android:layout_below="@+id/toggleButton1"
+        android:layout_marginTop="28dp"
+        android:text="@string/logedUser"
+        android:textColor="@color/gray"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/Button"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/logedUser"
+        android:layout_below="@+id/logedUser"
+        android:layout_marginTop="40dp"
+        android:text="@string/exit"
+        android:textSize="20sp" />
+
+</RelativeLayout>

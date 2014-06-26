@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -19,6 +20,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,7 +36,11 @@ public class WebServices {
 	private final static String URLNEW = "http://eventos.hol.es/php/createEvent.php";
 	private final static String URLSEARCH = "http://eventos.hol.es/php/searchEvent.php";
 	private final static String URLGETTYPES = "http://eventos.hol.es/php/getTypes.php";
-
+	private final static String URLREGISTER = "http://eventos.hol.es/php/register.php";
+	private static final String URLLOGIN = "http://eventos.hol.es/php/login.php";
+	  private static JSONParser jsonParser;
+	
+	
 	public static boolean post(Map<String, Object> result) throws Exception {
 		URL url = new URL(URLNEW);
 
@@ -152,5 +158,19 @@ public class WebServices {
 		}
 		return datos;
 	}
+	
+	  public static JSONObject registerUser(List params){
+		  Log.d("beatlm","PARAMETROS:"+params+"-"+URLREGISTER);
+	 jsonParser=new JSONParser();
+	        JSONObject json = jsonParser.getJSONFromUrl(URLREGISTER,params);
+	        return json;
+	    }
+	  
+	  public static JSONObject loginUser(List params){
+		  Log.d("beatlm","PARAMETROS:"+params+"-"+URLLOGIN);
+	 jsonParser=new JSONParser();
+	        JSONObject json = jsonParser.getJSONFromUrl(URLLOGIN,params);
+	        return json;
+	    }
 
 }

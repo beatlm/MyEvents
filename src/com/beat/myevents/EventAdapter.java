@@ -56,6 +56,8 @@ public EventAdapter(Activity activity, ArrayList<Event>items){
 	TextView hora=(TextView)v.findViewById(R.id.prevHour);
 	hora.setText(e.getHour());
 	
+	TextView precio=(TextView)v.findViewById(R.id.price);
+	precio.setText(e.getPrecio());
 	
 	TextView dia=(TextView)v.findViewById(R.id.prevDate);
 	dia.setText(e.getFecha());
@@ -77,11 +79,11 @@ public EventAdapter(Activity activity, ArrayList<Event>items){
 	}
 	Date hoy = new Date();
 
-	if(hoy.after(date)){
+	/*if(hoy.after(date)){
 		arg2.setBackgroundColor(R.color.red);
 	v.setBackgroundColor(R.color.red);
 	
-	}
+	}*/
 	return v;
 	        
 	}

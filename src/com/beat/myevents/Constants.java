@@ -20,5 +20,10 @@ public class Constants {
 	public static final String GET_OWN_EVENTS = "http://eventos.hol.es/php/getEventsByCreator.php";
 	public static final String GET_DETAIL = "http://eventos.hol.es/php/getEventDetail.php";
 	
-	public static final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000; 
+	public static final long MILLSECS_PER_DAY = 24 * 60 * 60 * 1000;
+	public static final String ALIAS = "alias";
+	public static final String PASSWORD = "password";
+	public static final String EMAIL = "email"; 
+	
+	public static final String RESULT = "result"; 
 }

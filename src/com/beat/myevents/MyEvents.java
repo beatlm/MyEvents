@@ -38,6 +38,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MyEvents extends ActionBarActivity implements OnItemClickListener {
@@ -111,6 +112,7 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 
 					String fecha = jsonChildNode.optString("fecha").toString();
 					String lugar = jsonChildNode.optString("lugar").toString();
+					String precio = jsonChildNode.optString("precio").toString();
 					String titulo = jsonChildNode.optString("titulo")
 							.toString();
 					long id = Long.parseLong(jsonChildNode.optString("id"));
@@ -142,7 +144,7 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 							+ year + " HORA:" + hora);
 
 					Event ev = new Event(id, titulo, fec, hora, "Quedan " + dif
-							+ " d’as", null);
+							+ " d’as", null, precio);
 					data.add(ev);
 					Log.d("beatlm", "data size+" + data.size());
 					EventAdapter adapter = new EventAdapter(MyEvents.this, data);
@@ -153,7 +155,8 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
 			} else {// No hay datos
 				TextView t = new TextView(this);
 				t.setText("No hay eventos");
-				lo.addView(t);
+				RelativeLayout rel=(RelativeLayout)findViewById(R.id.myEvents);
+				rel.addView(t);
 
 			}
 
