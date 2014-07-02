@@ -28,51 +28,29 @@
            android:scaleType="fitCenter"
            android:src="@drawable/logo" />
 
-       <TextView
-           android:id="@+id/error"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignLeft="@+id/logo"
-           android:layout_below="@+id/password"
-           android:layout_marginTop="21dp"
-           android:paddingBottom="5dp"
-           android:paddingLeft="50dp"
-           android:textColor="@color/red"
-           android:textSize="20sp" />
-
-       <TextView
-           android:id="@+id/textView1"
+       <EditText
+           android:id="@+id/usuario"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:layout_centerHorizontal="true"
-           android:layout_marginBottom="100dp"
-           android:fontFamily="sans-serif-thin"
-           android:text="@string/remember"
-           android:textColor="@color/black"
-           android:textSize="20sp"
-           android:textStyle="bold"
-           android:typeface="normal" />
-
-       <Button
-           android:id="@+id/buttonRegister"
-           style="@style/ButtonBig"
-           android:layout_above="@+id/textView1"
            android:layout_alignLeft="@+id/buttonLogin"
-           android:layout_marginBottom="30dp"
-           android:fontFamily="sans-serif"
-           android:onClick="registrar"
-           android:text="@string/register"
-           android:textSize="25sp"
-           android:typeface="normal" />
+           android:layout_below="@+id/logo"
+           android:layout_marginTop="25dp"
+           android:ems="10"
+           android:fontFamily="sans-serif-thin"
+           android:hint="@string/user"
+           android:maxLength="12"
+           android:textColor="@color/black"
+           android:textSize="30sp"
+           android:typeface="monospace" >     <requestFocus /></EditText>
+           
+              
 
        <EditText
            android:id="@+id/password"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_above="@+id/buttonLogin"
-           android:layout_centerHorizontal="true"
-           android:layout_marginBottom="37dp"
+           android:layout_alignLeft="@+id/usuario"
+           android:layout_below="@+id/usuario"
            android:ems="10"
            android:fontFamily="sans-serif-thin"
            android:hint="@string/password"
@@ -81,32 +59,54 @@
            android:textSize="30sp"
            android:typeface="monospace" >
 
-           <requestFocus />
+      
        </EditText>
 
-       <EditText
-           android:id="@+id/usuario"
-           android:layout_width="wrap_content"
+       <TextView
+           android:id="@+id/error"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:layout_above="@+id/password"
-           android:layout_alignLeft="@+id/buttonLogin"
-           android:ems="10"
-           android:fontFamily="sans-serif-thin"
-           android:hint="@string/user"
-           android:maxLength="12"
-           android:textColor="@color/black"
-           android:textSize="30sp"
-           android:typeface="monospace" />
+           android:layout_alignLeft="@+id/logo"
+           android:layout_below="@+id/password"
+           android:paddingBottom="5dp"
+           android:paddingLeft="50dp"
+           android:textColor="@color/red"
+           android:textSize="20sp" />
 
        <Button
            android:id="@+id/buttonLogin"
            style="@style/ButtonBig"
-           android:layout_above="@+id/buttonRegister"
+           android:layout_below="@+id/error"
            android:layout_centerHorizontal="true"
            android:fontFamily="sans-serif"
            android:onClick="logar"
            android:text="@string/enter"
            android:textSize="25sp"
            android:typeface="sans" />
+
+       <Button
+           android:id="@+id/buttonRegister"
+           style="@style/ButtonBig"
+           android:layout_alignLeft="@+id/buttonLogin"
+           android:layout_below="@+id/buttonLogin"
+           android:fontFamily="sans-serif"
+           android:onClick="registrar"
+           android:text="@string/register"
+           android:textSize="25sp"
+           android:typeface="normal" />
+
+       <TextView
+           android:id="@+id/zona"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/buttonRegister"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="29dp"
+           android:fontFamily="sans-serif-thin"
+           android:text="@string/remember"
+           android:textColor="@color/black"
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:typeface="normal" />
 
 </RelativeLayout>

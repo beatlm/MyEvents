@@ -33,6 +33,7 @@ public class Init extends ActionBarActivity {
 	private String TAG = "MainActivity";
 	private String user;
 
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -71,10 +72,7 @@ public class Init extends ActionBarActivity {
         
     	  new LoginRegister().execute(params);
 
-	/*	Intent intent = new Intent(this, MenuActivity.class);
-		intent.putExtra(Constants.USERNAME, user);
 
-		startActivity(intent);*/
 
 	}
 	
@@ -136,23 +134,23 @@ public class Init extends ActionBarActivity {
 		                          
 		                           Log.d("beatlm","Resultado "+res);
 		                 
-		                           if(Integer.parseInt(res) == 0){
+		                           if(Integer.parseInt(res) > 0){
 		                     
 		                           
 		                               Intent registered = new Intent(getApplicationContext(), MenuActivity.class);
 		                               registered.putExtra(Constants.USERNAME, user);
-		                     
-		                             
+		                     registered.putExtra(Constants.IDUSU, res);
+		                     Log.d("beatlm","IDUSU INIT"+res);
 		                               pDialog.dismiss();
 		                               startActivity(registered);
 		                               Log.d("beatlm","Va al menu "+res);
 		                                 finish();
 		                           }
-		                           else if (Integer.parseInt(res) ==1){
+		                           else if (Integer.parseInt(res) ==-1){
 		                               pDialog.dismiss();
 		                               Log.d("beatlm","Contrase–a incorrecta "+res);
 		                            error.setText("Contrase–a incorrecta");
-		                           }  else if (Integer.parseInt(res) ==2){
+		                           }  else if (Integer.parseInt(res) ==-2){
 		                               pDialog.dismiss();
 		                          
 		                            error.setText("No existe ningun usuario con ese alias.");

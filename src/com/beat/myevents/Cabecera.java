@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class Cabecera extends LinearLayout {
 	private TextView usuario;
-	private String foto;
+	private TextView zona;
 
 	public Cabecera(Context context) {
 		super(context);
@@ -30,12 +30,16 @@ public class Cabecera extends LinearLayout {
  
         inflater.inflate(R.layout.cabecera, this, true);
         usuario = (TextView) findViewById(R.id.userNameCab);
+        zona = (TextView) findViewById(R.id.zona);
 	}
 
 
 
 	public void setUsuario(String u) {
 		usuario.setText(u);
+	}
+	public void setZona(String u) {
+		zona.setText(u);
 	}
 
 }

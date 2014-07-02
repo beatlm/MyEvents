@@ -68,7 +68,7 @@
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonFav"
         style="@style/Button"
         android:layout_width="143dp"
         android:layout_height="wrap_content"

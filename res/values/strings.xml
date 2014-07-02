@@ -40,11 +40,11 @@
     <string name="showMap">Ver en mapa</string>
     <string name="title_activity_menu">MyEvents</string>
     <string name="search">Buscar</string>
-    <string name="fav">Favoritos</string>
+    <string name="fav">Mis Favoritos</string>
     <string name="pref">Preferencias</string>
     <string name="newEvent">Nuevo</string>
     <string name="notif">Notificaciones</string>
-        <string name="resetDates">Borrar fechas</string>
+    <string name="resetDates">Borrar fechas</string>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
@@ -66,15 +66,19 @@
     <string name="registerText">Introduce tus datos</string>
     <string name="alias">Alias</string>
     <string name="mail">E-mail</string>
-    
-    
-    
-       <string name="msgMin5">El nombre debe tener como mínimo 5 caracteres.</string>
-         <string name="msgEmpty">Por favor, rellena todos los campos.</string>
-            <string name="msgServer">Conectando con el servidor</string>
-               <string name="msgRegister">Registrando...</string>
-               <string name="remember">¿Has olvidado tu contraseña?</string>
-               <string name="euro">€</string>
-               <string name="validateAddress">Validar dirección</string>
+    <string name="msgMin5">El nombre debe tener como mínimo 5 caracteres.</string>
+    <string name="msgEmpty">Por favor, rellena todos los campos.</string>
+    <string name="msgServer">Conectando con el servidor</string>
+    <string name="msgRegister">Registrando...</string>
+    <string name="remember">¿Has olvidado tu contraseña?</string>
+    <string name="euro">€</string>
+    <string name="validateAddress">Validar dirección</string>
+    <string name="addPhoto">Añadir una foto</string>
+    <string name="validateAddressD">Valida la direccion para que los usuarios puedan localizarlo en un mapa.</string>
+    <string name="topEvents">Ultimos Eventos!</string>
+    <string name="ownEvents">Eventos creados por mí</string>
+    <string name="title_activity_own_events">OwnEventsActivity</string>
+    <string name="modify">Modificar</string>
+    <string name="delete">Eliminar</string>
 
 </resources>

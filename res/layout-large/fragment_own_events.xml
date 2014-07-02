@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.beat.myevents.Cabecera
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.beat.myevents.Cabecera>
+
+    <RelativeLayout
+        android:id="@+id/myEvents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="No has creado ningun evento"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:color="@color/white" />
+
+            <ListView
+                android:id="@+id/myEventsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:orientation="vertical" >
+
+            </ListView>
+
+    </RelativeLayout>
+
+</LinearLayout>

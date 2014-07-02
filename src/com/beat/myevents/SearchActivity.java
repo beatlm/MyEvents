@@ -33,6 +33,7 @@ import android.os.Bundle;
 public class SearchActivity extends ActionBarActivity implements
 		OnClickListener {
 	private String usuario;
+	private String idUsu;
 	private String fechaI;
 	private String fechaF;
 	private int pulsado;//Boton fecha pulsado
@@ -48,15 +49,13 @@ public class SearchActivity extends ActionBarActivity implements
 		
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
+		idUsu = intent.getStringExtra(Constants.IDUSU);
 		Cabecera c = (Cabecera) findViewById(R.id.cabecera);
 		c.setUsuario(usuario);
 
 		Button b = (Button) findViewById(R.id.searchButton);
 		b.setOnClickListener((OnClickListener) this);
 
-	 
-		 
-		
 
 	}
 
@@ -131,6 +130,8 @@ public class SearchActivity extends ActionBarActivity implements
 					Intent intent = new Intent(SearchActivity.this,
 							MyEvents.class);
 					intent.putExtra(Constants.DATA, Content);
+					intent.putExtra(Constants.IDUSU, idUsu);
+					
 					startActivity(intent);
 
 				} catch (Exception ex) {

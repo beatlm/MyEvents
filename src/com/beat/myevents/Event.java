@@ -10,6 +10,7 @@ private String title;
 	private String hour;
 	private Drawable photo;
 	private String precio;
+	private int estado;
 	
 
 	public Event() {		 
@@ -84,6 +85,14 @@ private String title;
 
 	public void setPrecio(String precio) {
 		this.precio = precio;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 	  
 	
