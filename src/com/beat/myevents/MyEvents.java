@@ -221,8 +221,10 @@ public class MyEvents extends ActionBarActivity implements OnItemClickListener {
            if(keyCode == KeyEvent.KEYCODE_BACK)
            {
         	   Log.d("beatlm","Se ha pulsado BACK");
-        	   Intent Act2Intent = new Intent(MyEvents.this, MenuActivity.class);              
-               startActivity(Act2Intent);          
+        	   Intent intent = new Intent(MyEvents.this, MenuActivity.class);    
+        		intent.putExtra(Constants.USERNAME, usuario);
+        		intent.putExtra(Constants.IDUSU, idUsu);
+               startActivity(intent);          
                finish();
                return true;
            }

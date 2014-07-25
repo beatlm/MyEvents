@@ -92,18 +92,6 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/buttonFav"
-        android:layout_marginTop="34dp"
-        android:paddingLeft="30dp"
-        android:text="@string/insertDesc"
-        android:textColor="@color/darkBlue"
-        android:textSize="25sp" />
-
     <Button
         android:id="@+id/buttonFav"
         style="@style/Button"
@@ -136,19 +124,6 @@
         android:onClick="createEvent"
         android:text="@string/createEvent"
         android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/createDesc"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="16dp"
-        android:ems="200"
-        android:inputType="textMultiLine"
-        android:lines="3"
-        android:scrollbars="vertical"
-        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/price"
@@ -219,5 +194,42 @@
         android:text="@string/addPhoto"
         android:textSize="20sp"
         android:onClick="addPhoto" />
+
+    <Button
+        android:id="@+id/btnshowMap"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonFav"
+        android:layout_alignRight="@+id/buttonFav"
+        android:layout_below="@+id/zona"
+        android:text="Mostrar en mapa"
+        android:textSize="20sp" 
+        android:onClick="showMap"/>
+
+    <EditText
+        android:id="@+id/createDesc"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="31dp"
+        android:ems="200"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:scrollbars="vertical"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnshowMap"
+        android:layout_marginTop="17dp"
+        android:paddingLeft="30dp"
+        android:text="@string/insertDesc"
+        android:textColor="@color/darkBlue"
+        android:textSize="25sp" />
 
 </RelativeLayout>

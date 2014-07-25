@@ -86,7 +86,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnshowMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/button2"
@@ -99,8 +99,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/zona"
-            android:layout_alignLeft="@+id/button1"
-            android:layout_alignRight="@+id/button1"
+            android:layout_alignLeft="@+id/btnshowMap"
+            android:layout_alignRight="@+id/btnshowMap"
             android:background="@color/red"
             android:text="@string/delete"
             android:textColor="@color/white" 

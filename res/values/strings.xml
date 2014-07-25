@@ -80,5 +80,6 @@
     <string name="title_activity_own_events">OwnEventsActivity</string>
     <string name="modify">Modificar</string>
     <string name="delete">Eliminar</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

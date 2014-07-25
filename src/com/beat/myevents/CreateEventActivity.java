@@ -51,6 +51,7 @@ public class CreateEventActivity extends ActionBarActivity {
 	private Spinner types;
 	private ImageView imageView;
 	private boolean foto;
+	private String idUsu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +64,32 @@ public class CreateEventActivity extends ActionBarActivity {
 
 		Intent intent = getIntent();
 		usuario = intent.getStringExtra(Constants.USERNAME);
+		idUsu = intent.getStringExtra(Constants.USERNAME);
 
 		Cabecera c = (Cabecera) findViewById(R.id.cabecera);
 		c.setUsuario(usuario);
 
 		imageView = (ImageView) findViewById(R.id.createPhoto);
 
+
+	}
+	
+	
+	public void showMap(View view){
+		
+		Intent intent = new Intent(this, MapaActivity.class);
+		intent.putExtra(Constants.IDUSU, idUsu);
+	
+
+	
+	intent.putExtra(Constants.USERNAME, usuario);
+	intent.putExtra(Constants.LATITUD, latitud);
+	intent.putExtra(Constants.LONGITUD, longitud);
+ 
+
+	startActivity(intent);
+		
+		
 	}
 
 	public void addPhoto(View view) {
@@ -214,7 +235,7 @@ public class CreateEventActivity extends ActionBarActivity {
 		}
 	}
 
-	private void validate(View v) {
+	public void validate(View v) {
 
 		EditText e = (EditText) findViewById(R.id.createAddress);
 		String strAddress = e.getText().toString();
@@ -273,6 +294,7 @@ public class CreateEventActivity extends ActionBarActivity {
 				// Establecemos los valores para mandarlos a BBDD
 				latitud = res[0];
 				longitud = res[1];
+				Log.d("beatlm","Latitud long:"+latitud+"-"+longitud);
 			}
 
 		}
@@ -365,7 +387,8 @@ public class CreateEventActivity extends ActionBarActivity {
 			try {
 				Content = WebServices.getTypes();
 			} catch (Exception e) {
-
+				Content=new String[1];
+Content[0]="Ninguno";
 				e.printStackTrace();
 			}
 			return null;
@@ -374,7 +397,9 @@ public class CreateEventActivity extends ActionBarActivity {
 		protected void onPostExecute(Void unused) {
 
 			Dialog.dismiss();
-
+if(Content==null){
+	Content[0]="Ninguno";
+}
 			ArrayAdapter<String> adaptador = new ArrayAdapter<String>(
 					CreateEventActivity.this,
 					android.R.layout.simple_spinner_item, Content);
